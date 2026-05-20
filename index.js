@@ -17,6 +17,19 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Backend Sicilia Soil funcionando 🚀" });
 });
 
+// Ruta raíz - para evitar Cannot GET /
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    message: "Sicilia Soil API is running 🚀",
+    endpoints: {
+      health: "/api/health",
+      zones: "/api/zones",
+      data: "/api/data (POST)",
+    },
+  });
+});
+
 // Datos simulados para las zonas
 app.get("/api/zones", (req, res) => {
   const zones = [
